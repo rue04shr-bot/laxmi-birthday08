@@ -806,19 +806,16 @@ sceneInit['scene-letter'] = ()=>{
   const bodyEl = document.getElementById('letter-body');
   const cursor = document.createElement('span');
   cursor.className='cursor-blink'; cursor.innerHTML='&nbsp;';
-  let i=0;
-  function type(){
-    if(i<=letterText.length){
-      bodyEl.textContent = letterText.slice(0,i);
-      bodyEl.appendChild(cursor);
-      i+=2;
-      setTimeout(type, 14);
-    } else {
-      cursor.remove();
-      gsap.to('#letter-sign', {opacity:1, duration:1});
-      gsap.to('#letter-continue', {opacity:1, duration:1, delay:0.6});
-    }
+  let i = 0;
+
+function type() {
+  if (i <= letterText.length) {
+    bodyEl.textContent = letterText.slice(0, i);
+    bodyEl.appendChild(cursor);
+    i += 1;
+    setTimeout(type, 60);
   }
+}
   setTimeout(type, 800);
 };
 
